@@ -1,0 +1,7 @@
+nltk            
+numpy              
+scikit-learn       
+pdfplumber
+Flask    
+flask-cors        
+gunicorn

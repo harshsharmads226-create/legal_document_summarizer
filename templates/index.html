@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Legal Decision Summarizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-wrapper">
+    <div class="card">
+      <div class="header-row">
+        <div class="logo-badge"><div class="logo-inner">⚖️</div></div>
+        <div class="title-block">
+          <h1>Legal Decision Summarizer</h1>
+          <p>Paste legal text or upload a PDF to generate a concise summary using TextRank.</p>
+        </div>
+      </div>
+
+      <div class="layout">
+
+        <!-- Input Panel -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">📝 Input Legal Text / PDF</div>
+            <div class="pill">Step 1</div>
+          </div>
+
+          <textarea id="inputText" class="textarea"
+            placeholder="Paste legal text here..."></textarea>
+
+          <div class="pdf-row">
+            <label class="pdf-label">Or upload a PDF judgment:</label>
+            <div class="pdf-controls">
+              <input type="file" id="pdfInput" accept="application/pdf" class="pdf-input" />
+              <button id="pdfUploadBtn" class="btn btn-small">📄 Upload & Summarize PDF</button>
+            </div>
+          </div>
+
+          <div class="controls-row">
+            <button id="summarizeBtn" class="btn">
+              <span class="icon">⚡</span> Summarize Text
+            </button>
+            <button id="clearBtn" class="btn btn-secondary">Clear</button>
+          </div>
+
+          <div id="errorMsg" class="error-msg"></div>
+        </div>
+
+        <!-- Output Panel -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">📌 Summary</div>
+            <div class="pill">Step 2</div>
+          </div>
+
+          <div id="outputBox" class="output-box">
+            <span class="muted">Your summary will appear here…</span>
+          </div>
+
+          <div class="download-row">
+            <button id="downloadBtn" class="btn btn-outline">
+              ⬇️ Download Summary (.txt)
+            </button>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat-pill" id="statOriginal">Original: 0 sentences</div>
+            <div class="stat-pill" id="statSummary">Summary: 0 sentences</div>
+            <div class="stat-pill" id="statCompression">Compression: 0%</div>
+          </div>
+
+          <div class="footer-note">
+            <span>Algorithm: TextRank extractive summarization.</span>
+            <span class="tag-legal">Domain: Legal Decisions</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
